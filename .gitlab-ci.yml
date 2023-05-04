@@ -17,18 +17,14 @@ build_jira:
     name: gcr.io/kaniko-project/executor:v1.9.0-debug
     entrypoint: [""]
   extends: .jira_rules
-  artifacts:
-    paths:
-      - app/.release
   script:
     - cd app
     - |
       if [ -n "${CI_MERGE_REQUEST_ID}" ]; then
-        RELEASE_TAG=${CI_COMMIT_REF_NAME}
-      else
         RELEASE_TAG=$(grep "^release=" .release | cut -d "=" -f 2)
+      else
+        RELEASE_TAG=${RELEASE_TAG:-$DEFAULT_RELEASE_TAG} 
       fi
-    - RELEASE_TAG=${RELEASE_TAG:-$DEFAULT_RELEASE_TAG} # Use the default release tag if RELEASE_TAG is empty
     - >
       /kaniko/executor 
       --context "${CI_PROJECT_DIR}/app" 
