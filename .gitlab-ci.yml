@@ -30,5 +30,5 @@ build_jira:
       --context "${CI_PROJECT_DIR}/app" 
       --dockerfile "${CI_PROJECT_DIR}/app/Dockerfile"
       --build-arg RELEASE_TAG=$RELEASE_TAG
-      --destination "${CI_REGISTRY_IMAGE}/jira-software:${RELEASE_TAG}"
-      --destination "${CI_REGISTRY_IMAGE}/jira-software:${CI_COMMIT_SHA}"
+      --destination "${CI_REGISTRY_IMAGE}:${RELEASE_TAG}"
+      --destination "${CI_REGISTRY_IMAGE}:${CI_COMMIT_SHA}"
