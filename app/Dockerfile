@@ -1,4 +1,4 @@
-ARG BUID_TAG=latest
+ARG BUILD_TAG=latest
 
 FROM atlassian/jira-software:${BUILD_TAG}-jdk11
 
