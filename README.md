@@ -1,14 +1,14 @@
 # Jira Software
 
-This repo is responsible for creating the Atlassian Jira Docker image for our internal use.
+This repo is responsible for creating the Atlassian Jira Docker images for our internal use that has been customized with a MySQL ODBC Connector.
 
 There's not a lot going on in repo itself other than defining a Dockerfile and a few GitHub Actions.
 
 ## Usage
-To build an image for Jira Software, simply trigger a new run of the default pipeline for this repo via the [GitLab UI](https://it-gitlab.slickdeals.dev/itops/jira-software/-/pipelines)
+To trigger a build of the Dev Jira Docker Image, make your changes in a branch and open a PR against the develop branch. Check the status of [GH Action](https://github.com/Slickdeals/jira-software/actions/workflows/build-dev-image.yml) and view the output of the job run for your changes.
 
-The image will be built from the Dockerfile in the `app` folder of this repo. There are two images that will be built from these pipelines, an image for use with our Dev environment, and an image for our Production Jira instance.
+Once you are happy with your changes, merge your PR into the develop branch. This will trigger a build of the Dev Jira Docker Image and push it to the Slickdeals GHCR.
 
-Once built, the Docker Image will be tagged with the Git Commit SHA and the version of Jira Software that was used to build the image.
+Merging your changes against the develop branch will trigger a Push of the Dev Jira Docker Image to the Slickdeals GHCR.
 
-The resulting image will be pushed to the Slickdeals GHCR for use on our systems.
+Once changes have been tested against the develop branch, they can be merged into the main branch. This will trigger a build of the Production Jira Docker Image and push it to the Slickdeals GHCR.
