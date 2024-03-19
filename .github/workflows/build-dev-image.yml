@@ -1,4 +1,4 @@
-name: Build & Push Docker Image to GitHub
+name: Build & Push Jira Development Docker Image to GHCR
 
 on:
   pull_request:
@@ -34,7 +34,6 @@ jobs:
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           tags: |
-            latest
             ${{ env.COMMIT_SHA }}
             ${{ vars.DEVELOP_TAG}}
       - name: Build and push Docker image

@@ -1,7 +1,6 @@
-name: Build & Push Docker Image to GitHub
+name: Build & Push Jira Release Docker Image to GHCR
 
 on:
-  pull_request:
   push:
     branches: 
       - main
@@ -34,7 +33,6 @@ jobs:
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           tags: |
-            latest
             ${{ env.COMMIT_SHA }}
             ${{ vars.RELEASE_TAG}}
       - name: Build, Tag, and push Docker image
