@@ -1,6 +1,6 @@
-ARG RELEASE_TAG=latest
+ARG BUILD_TAG=latest
 
-FROM atlassian/jira-software:${RELEASE_TAG}-jdk11
+FROM atlassian/jira-software:${BUILD_TAG}-jdk11
 
 RUN apt-get update && apt-get install wget
 
