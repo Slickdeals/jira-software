@@ -1,6 +1,7 @@
 name: Build & Push Jira Release Docker Image to GHCR
 
 on:
+  workflow_dispatch:
   pull_request:
     branches:
       - main
